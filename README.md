@@ -6,7 +6,7 @@ By default this script will include all gifs, pngs, and jpgs and output the tags
 
 ## What is this used for?
 
-If you want to have a page containing hundreds of images but don't want to write each <img> tag by hand, you can use this simple script to do this for you.
+If you want to have a page containing hundreds of images but don't want to write each &lt;img> tag by hand, you can use this simple script to do this for you.
 
 ## Editing the script
 
