@@ -17,18 +17,22 @@ txt = '_tags.txt'
 # tuple containing file types/extensions
 imageTypes = ('.png', '.gif', '.jpeg', '.jpg', '.PNG', '.GIF', '.JPEG', '.JPG')
 
-# look through current directory
-for root, dirs, files in os.walk(r'.'):
+def main():
+	# look through current directory
+	for root, dirs, files in os.walk(r'.'):
 
-    # check for files
-    for file in files:
+		# check for files
+		for file in files:
 
-	# check to see if the file is an image file type
-        if file.endswith(imageTypes):
+		# check to see if the file is an image file type
+			if file.endswith(imageTypes):
 
-            print(f'Adding {file} to {txt}')
-			
-	    # open file "tags.txt" for writing and add the <img> tag to it
-            f = open(txt, "a")
-            f.write(f'<img src="{file}">\n')
-            f.close()
+				print(f'Adding {file} to {txt}')
+
+			# open file "tags.txt" for writing and add the <img> tag to it
+				f = open(txt, "a")
+				f.write(f'<img src="{file}">\n')
+				f.close()
+
+if __name__ == "__main__":
+	main()
