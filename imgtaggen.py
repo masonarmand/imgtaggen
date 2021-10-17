@@ -24,12 +24,12 @@ def main():
 		# check for files
 		for file in files:
 
-		# check to see if the file is an image file type
+			# check to see if the file is an image file type
 			if file.endswith(imageTypes):
 
 				print(f'Adding {file} to {txt}')
 
-			# open file "tags.txt" for writing and add the <img> tag to it
+				# open file "tags.txt" for writing and add the <img> tag to it
 				f = open(txt, "a")
 				f.write(f'<img src="{file}">\n')
 				f.close()
