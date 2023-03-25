@@ -1,38 +1,36 @@
-#   ___                __    _                                 
-#  / (_)_ __ ___   __ _\ \  | |_ __ _  __ _    __ _  ___ _ __  
-# / /| | '_ ` _ \ / _` |\ \ | __/ _` |/ _` |  / _` |/ _ \ '_ \ 
-# \ \| | | | | | | (_| |/ / | || (_| | (_| | | (_| |  __/ | | |
-#  \_\_|_| |_| |_|\__, /_/   \__\__,_|\__, |  \__, |\___|_| |_|
-#                 |___/               |___/   |___/           
-#
-# A very simple but useful script for generating huge lists of <img> tags 
+"""
+file: imgtaggen.py
+author: Mason Armand
 
-
-
+This is a super simple script that creates a text file containing html
+<img> tags for all files in a directory.
+"""
 import os
 
 # text file containing tags
-txt = '_tags.txt'
+TAGS_FILE = '_tags.txt'
 
 # tuple containing file types/extensions
-imageTypes = ('.png', '.gif', '.jpeg', '.jpg', '.PNG', '.GIF', '.JPEG', '.JPG')
+IMAGE_TYPES = (
+    '.png', '.gif', '.jpeg', '.jpg', '.webp', '.jfif'
+)
+
 
 def main():
-	# look through current directory
-	for root, dirs, files in os.walk(r'.'):
+    """ Append html <img> tags to TAGS_FILE """
 
-		# check for files
-		for file in files:
+    for _, _, files in os.walk(r'.'):
+        for file in files:
+            if not file.lower().endswith(IMAGE_TYPES):
+                continue
 
-			# check to see if the file is an image file type
-			if file.endswith(imageTypes):
+            print(f'Adding {file} to {TAGS_FILE}...')
 
-				print(f'Adding {file} to {txt}')
+            # open file "tags.txt" for writing and add the <img> tag to it
+            with open(TAGS_FILE, "a", encoding="utf-8") as text_file:
+                text_file.write(f'<img src="{file}">\n')
+                text_file.close()
 
-				# open file "tags.txt" for writing and add the <img> tag to it
-				f = open(txt, "a")
-				f.write(f'<img src="{file}">\n')
-				f.close()
 
 if __name__ == "__main__":
-	main()
+    main()
